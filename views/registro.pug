@@ -1,0 +1,40 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Caja Pro Web - Registro
+    link(rel="stylesheet", href="/styles.css")
+
+  body
+    header
+      .marca
+        span.badge-caja POS System
+        h1 Caja Pro Web
+
+    .auth-contenedor
+      .card
+        .card-header
+          h2 Alta de Cajero
+
+        if error
+          p.error #{error}
+
+        form(action="/registro", method="POST")
+          .campo
+            label Nombre completo
+            input(type="text", name="nombre", placeholder="Ej: Celeste Vera", required)
+
+          .campo
+            label Email
+            input(type="email", name="email", placeholder="cajero@supermercado.com", required)
+
+          .campo
+            label Contraseña
+            input(type="password", name="password", placeholder="Creá una contraseña", required)
+
+          button.btn-guardar(type="submit") Crear usuario
+
+        p.link-auth
+          | ¿Ya tenés cuenta?
+          a(href="/login")  Iniciá sesión

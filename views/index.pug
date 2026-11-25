@@ -1,0 +1,88 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Caja Pro Web | Terminal POS
+    link(rel="stylesheet", href="/styles.css")
+
+  body
+    header
+      .marca
+        span.badge-caja Caja #01 Activa
+        h1 Caja Pro Web
+      a.btn-salir(href="/login") Cerrar Caja
+
+    main.contenedor
+      section.card
+        .card-header
+          h2 Terminal de Cobro
+          span.badge-caja En línea
+
+        .visor-caja
+          div
+            span.visor-etiqueta Total a cobrar
+            p#visorDetalle.visor-detalle Seleccioná un producto
+          span#visorMonto.visor-monto $0.00
+
+        p#mensajeVenta.error(style="display: none;")
+
+        form#formVenta
+          .campo
+            label Producto escaneado / seleccionado
+            select#productoSelect(required)
+
+          .campo
+            label Cantidad (unidades)
+            input(type="number", id="cantidadVenta", min="1", value="1", required)
+
+          button.btn-cobrar(type="submit") COBRAR Y EMITIR TICKET
+
+        h3 Últimos tickets emitidos
+        .tabla-wrapper
+          table
+            thead
+              tr
+                th Artículo
+                th Cant.
+                th Unit.
+                th Total
+            tbody#tablaVentas
+
+      section.card
+        .card-header
+          h2 Inventario y Góndola
+
+        p#mensajeProducto.error(style="display: none;")
+
+        form#formProducto
+          .campo
+            label Nombre del artículo
+            input(type="text", id="nombre", placeholder="Ej: Leche Entera 1L", required)
+
+          .fila-doble
+            .campo
+              label Precio de venta ($)
+              input(type="number", id="precio", min="0", step="0.01", placeholder="0.00", required)
+
+            .campo
+              label Stock en depósito
+              input(type="number", id="stock", min="0", placeholder="0", required)
+
+          button.btn-guardar(type="submit") Guardar en inventario
+
+        h3 Artículos disponibles
+        .tabla-wrapper
+          table
+            thead
+              tr
+                th Artículo
+                th Precio
+                th Stock
+                th Acciones
+            tbody#tablaProductos
+
+    footer
+      p Caja Pro Web POS • Sistema de Punto de Venta y Control de Stock
+
+    script(src="/js/app.js")

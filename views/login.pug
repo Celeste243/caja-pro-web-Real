@@ -1,0 +1,36 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Caja Pro Web - Login
+    link(rel="stylesheet", href="/styles.css")
+
+  body
+    header
+      .marca
+        span.badge-caja POS System
+        h1 Caja Pro Web
+
+    .auth-contenedor
+      .card
+        .card-header
+          h2 Acceso de Cajero
+
+        if error
+          p.error #{error}
+
+        form(action="/login", method="POST")
+          .campo
+            label Email del operador
+            input(type="email", name="email", placeholder="cajero@supermercado.com", required)
+
+          .campo
+            label Contraseña
+            input(type="password", name="password", placeholder="••••••••", required)
+
+          button.btn-cobrar(type="submit") Abrir Caja
+
+        p.link-auth
+          | ¿No tenés usuario?
+          a(href="/registro")  Registrate acá
